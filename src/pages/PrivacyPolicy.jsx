@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
 
           {/* Content - Paper Style */}
           <div className="space-y-8" style={{ color: '#4A5568', lineHeight: '1.8' }}>
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Introduction
@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Information We Collect
@@ -72,7 +72,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Use of Information
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.4}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Legitimate Use of Personal Information
@@ -107,7 +107,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.5}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Security of Your Information
@@ -118,7 +118,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.6}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Data Retention
@@ -129,7 +129,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.7}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Your Rights
@@ -146,7 +146,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.8}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Cookies
@@ -157,7 +157,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.9}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Third-Party Links
@@ -168,7 +168,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={1.0}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
                   Changes to This Policy
@@ -179,7 +179,7 @@ const PrivacyPolicy = () => {
               </section>
             </ScrollReveal>
 
-            <ScrollReveal delay={1.1}>
+            <ScrollReveal delay={0}>
               <section className="mt-12 pt-8 border-t-2" style={{ borderColor: '#0F2A44' }}>
                 <h2 className="text-2xl font-bold mb-4" style={{ color: '#0B1F33' }}>
                   Contact Us

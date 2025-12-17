@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 import ScrollReveal from '../components/ScrollReveal'
 
 const Contact = () => {
@@ -15,11 +14,6 @@ const Contact = () => {
 
   useEffect(() => {
     document.title = 'Contact Us - Somkart'
-    // Initialize EmailJS with public key
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    if (publicKey) {
-      emailjs.init(publicKey)
-    }
   }, [])
 
   const handleChange = (e) => {
@@ -37,6 +31,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+    setSubmitted(false)
     setIsSubmitting(true)
 
     // Validation
@@ -70,35 +65,43 @@ const Contact = () => {
       return
     }
 
+    // Get backend API URL from environment variables
+    const apiUrl = import.meta.env.VITE_API_URL
+    
+    if (!apiUrl) {
+      setError('API configuration error. Please contact support.')
+      setIsSubmitting(false)
+      return
+    }
+    
     try {
-      // EmailJS configuration
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'your_service_id'
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'your_template_id'
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      const response = await fetch(`${apiUrl}/contact/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        }),
+      })
 
-      if (!publicKey || serviceId === 'your_service_id' || templateId === 'your_template_id') {
-        setError('Email service is not configured. Please contact us directly at support@somkart.com')
-        setIsSubmitting(false)
-        return
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        // Handle validation errors from backend
+        const errorMessages = data.errors 
+          ? Object.values(data.errors).flat().join(', ')
+          : data.message || 'Failed to send message. Please try again.'
+        setError(errorMessages)
       }
-
-      // Prepare template parameters
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_email: 'somkartapp@gmail.com',
-        reply_to: formData.email,
-      }
-
-      // Send email using EmailJS
-      await emailjs.send(serviceId, templateId, templateParams)
-
-      setSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-    } catch (err) {
-      console.error('EmailJS Error:', err)
-      setError('Failed to send message. Please try again or email us directly at support@somkart.com')
+    } catch (error) {
+      console.error('API Error:', error)
+      setError('Failed to send message. Please check your connection and try again, or email us directly at support@somkart.com')
     } finally {
       setIsSubmitting(false)
     }

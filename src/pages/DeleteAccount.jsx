@@ -39,7 +39,13 @@ const DeleteAccount = () => {
     }
 
     try {
-      const apiUrl = import.meta.env.VITE_API_BASE_URL || 'https://api.somkart.com'
+      const apiUrl = import.meta.env.VITE_API_URL
+      
+      if (!apiUrl) {
+        setError('API configuration error. Please contact support.')
+        return
+      }
+      
       const response = await fetch(`${apiUrl}/account/delete-request`, {
         method: 'POST',
         headers: {

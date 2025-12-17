@@ -19,6 +19,7 @@ Modern, animated, production-ready website for the Somkart mobile application. S
 ## Tech Stack
 
 - **Frontend**: React 18 with Vite
+- **Backend**: Django REST Framework (for contact form submissions)
 - **Routing**: React Router v6
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
@@ -30,6 +31,8 @@ Modern, animated, production-ready website for the Somkart mobile application. S
 
 - Node.js (v16 or higher)
 - npm or yarn
+- Python 3.8+ (for Django backend)
+- pip (Python package manager)
 
 ### Installation
 
@@ -62,30 +65,60 @@ npm run preview
 
 Create a `.env` file in the root directory with the following variables:
 
-```
-VITE_API_BASE_URL=https://api.somkart.com
-VITE_CONTACT_API_URL=https://api.somkart.com/contact
-VITE_SUPPORT_EMAIL=support@somkart.com
+```env
+# Backend API URL (Django)
+# For local development:
+VITE_BACKEND_API_URL=http://localhost:8000/api
 
-# EmailJS Configuration (Required for Contact Form)
-# Get these from https://www.emailjs.com/
-VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
-VITE_EMAILJS_SERVICE_ID=your_service_id_here
-VITE_EMAILJS_TEMPLATE_ID=your_template_id_here
+# For production (use your online backend URL):
+# VITE_BACKEND_API_URL=https://your-online-backend.com/api
 ```
 
-### EmailJS Setup
+## Backend Setup (Django)
 
-The contact form uses EmailJS to send emails directly to **somkartapp@gmail.com** without a backend.
+The contact form now uses a Django backend to store submissions and send email notifications.
 
-**Quick Setup:**
-1. Sign up at [https://www.emailjs.com/](https://www.emailjs.com/) (free plan: 200 emails/month)
-2. Add Gmail service and connect **somkartapp@gmail.com**
-3. Create an email template with variables: `{{from_name}}`, `{{from_email}}`, `{{message}}`, `{{reply_to}}`
-4. Copy your Public Key, Service ID, and Template ID
-5. Add them to your `.env` file
+### Quick Setup
 
-**Detailed instructions:** See `EMAILJS_SETUP.md` for step-by-step guide.
+1. **Navigate to backend directory:**
+   ```bash
+   cd backend
+   ```
+
+2. **Create virtual environment:**
+   ```bash
+   python -m venv venv
+   # Windows:
+   venv\Scripts\activate
+   # macOS/Linux:
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure environment:**
+   ```bash
+   # Windows:
+   copy .env.example .env
+   # macOS/Linux:
+   cp .env.example .env
+   ```
+   Then edit `.env` with your settings (see `backend/.env.example`)
+
+5. **Run migrations:**
+   ```bash
+   python manage.py migrate
+   ```
+
+6. **Start Django server:**
+   ```bash
+   python manage.py runserver
+   ```
+
+**Detailed instructions:** See `DJANGO_SETUP.md` for complete setup guide and integration with your existing online backend.
 
 ## Deployment
 
@@ -112,6 +145,12 @@ This website is ready to be deployed on:
 
 ```
 somkart-website/
+├── backend/                    # Django backend
+│   ├── contact/               # Contact form app
+│   ├── somkart_backend/       # Django project settings
+│   ├── manage.py
+│   ├── requirements.txt
+│   └── README.md
 ├── public/
 ├── src/
 │   ├── components/
@@ -134,6 +173,7 @@ somkart-website/
 ├── tailwind.config.js
 ├── netlify.toml
 ├── vercel.json
+├── DJANGO_SETUP.md           # Django backend setup guide
 └── README.md
 ```
 
