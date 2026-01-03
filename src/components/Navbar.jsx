@@ -91,6 +91,28 @@ const Navbar = () => {
               )}
               <span className="relative z-10">Contact</span>
             </Link>
+            <Link
+              to="/delete-account"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-all relative ${
+                isActive('/delete-account')
+                  ? 'hover:bg-gray-50'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+              style={isActive('/delete-account') ? { color: '#0F2A44', backgroundColor: '#E3F2FD' } : { color: '#4A5568' }}
+              onMouseEnter={(e) => !isActive('/delete-account') && (e.target.style.color = '#1E88E5')}
+              onMouseLeave={(e) => !isActive('/delete-account') && (e.target.style.color = '#4A5568')}
+            >
+              {isActive('/delete-account') && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute inset-0 rounded-lg"
+                  style={{ backgroundColor: '#E3F2FD' }}
+                  initial={false}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">Delete Account</span>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -181,6 +203,20 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              to="/delete-account"
+              className={`block px-3 py-2 rounded-lg text-base font-medium transition-all ${
+                isActive('/delete-account')
+                  ? 'hover:bg-gray-50'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+              style={isActive('/delete-account') ? { color: '#0F2A44', backgroundColor: '#E3F2FD' } : { color: '#4A5568' }}
+              onMouseEnter={(e) => !isActive('/delete-account') && (e.target.style.color = '#1E88E5')}
+              onMouseLeave={(e) => !isActive('/delete-account') && (e.target.style.color = '#4A5568')}
+              onClick={() => setIsOpen(false)}
+            >
+              Delete Account
             </Link>
           </div>
         </motion.div>

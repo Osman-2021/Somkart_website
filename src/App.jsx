@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import PrivacyPolicy from './pages/PrivacyPolicy'
-// import DeleteAccount from './pages/DeleteAccount'
+import DeleteAccount from './pages/DeleteAccount'
 import Contact from './pages/Contact'
 import PageTransition from './components/PageTransition'
 
@@ -30,14 +30,14 @@ function AppRoutes() {
             </PageTransition>
           }
         />
-        {/* <Route
+        <Route
           path="/delete-account"
           element={
             <PageTransition>
               <DeleteAccount />
             </PageTransition>
           }
-        /> */}
+        />
         <Route
           path="/contact"
           element={

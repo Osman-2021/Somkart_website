@@ -65,13 +65,13 @@ const Contact = () => {
       return
     }
 
-    // Get backend API URL from environment variables
-    const apiUrl = import.meta.env.VITE_API_URL
-    
-    if (!apiUrl) {
-      setError('API configuration error. Please contact support.')
-      setIsSubmitting(false)
-      return
+    // Get backend API URL from environment variables; fall back to public API
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://api.somkart.so'
+
+    // If env var is not set, log a warning for developers but continue using the fallback
+    if (!import.meta.env.VITE_API_URL) {
+      // eslint-disable-next-line no-console
+      console.warn('VITE_API_URL is not set — using fallback API URL:', apiUrl)
     }
     
     try {
