@@ -167,6 +167,16 @@ const PrivacyPolicy = () => {
                 </p>
               </section>
             </ScrollReveal>
+             <ScrollReveal delay={0}>
+              <section>
+                <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
+                  Third-Party Links
+                </h2>
+                <p>
+                  Our services may contain links to third-party websites. Somkart is not responsible for the privacy practices or content of external sites.
+                </p>
+              </section>
+            </ScrollReveal>
 
             <ScrollReveal delay={0}>
               <section>
