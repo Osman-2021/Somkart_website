@@ -167,16 +167,23 @@ const PrivacyPolicy = () => {
                 </p>
               </section>
             </ScrollReveal>
-             <ScrollReveal delay={0}>
+            <ScrollReveal delay={0}>
               <section>
                 <h2 className="text-2xl font-bold mb-4 mt-8" style={{ color: '#0B1F33' }}>
-                  Third-Party Links
+                  ACCOUNT & DATA DELETION
                 </h2>
                 <p>
-                  Our services may contain links to third-party websites. Somkart is not responsible for the privacy practices or content of external sites.
+                  Method 1: In-App Deletion
+                  Log in to the app, go to Profile → Logout Account. 
+                   <p>
+                  Method 2: Email Request
+                  You can also email us at somkartApp@gmail.com , and we will delete your account within 48 hours.
+                  Please include your registered phone number in your email request for faster processing.
+                   </p>
                 </p>
               </section>
             </ScrollReveal>
+            
 
             <ScrollReveal delay={0}>
               <section>
