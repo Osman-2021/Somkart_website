@@ -66,13 +66,13 @@ const Contact = () => {
     }
 
     // Get backend API URL from environment variables; fall back to public API
-    const apiUrl = import.meta.env.VITE_API_URL || 'https://api.somkart.so'
+    const apiUrl = import.meta.env.VITE_API_URL || 'https://www.somkart.so/api'
 
-    // If env var is not set, log a warning for developers but continue using the fallback
-    if (!import.meta.env.VITE_API_URL) {
-      // eslint-disable-next-line no-console
-      console.warn('VITE_API_URL is not set — using fallback API URL:', apiUrl)
-    }
+    // // If env var is not set, log a warning for developers but continue using the fallback
+    // if (!import.meta.env.VITE_API_URL) {
+    //   // eslint-disable-next-line no-console
+    //   console.warn('VITE_API_URL is not set — using fallback API URL:', apiUrl)
+    // }
     
     try {
       const response = await fetch(`${apiUrl}/contact/`, {
